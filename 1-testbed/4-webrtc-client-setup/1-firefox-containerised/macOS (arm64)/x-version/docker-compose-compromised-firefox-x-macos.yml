@@ -1,0 +1,84 @@
+# Docker compose file allowing to launch a Firefox container resistant to WebRTC IP leak. It runs under X
+# (XQuartz) - https://www.xquartz.org/.
+#
+# Copyright (C) 2024 Guillaume Nibert <guillaume.nibert@snowpack.eu>,
+#                    Sébastien Tixeuil <sebastien.tixeuil@lip6.fr>,
+#                    Baptiste Polvé <baptiste.polve@snowpack.eu>,
+#                    Nana J. Bakalafoua M'boussi <nana.bakalafoua@snowpack.eu>,
+#                    Xuan Son Nguyen <xuanson.nguyen@snowpack.eu>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+#
+# Maintainer: Guillaume Nibert <guillaume.nibert@snowpack.eu>
+services:
+    compromised-firefox-docker-x-macos:
+        # To up container as a non-root user that have the same UID:GID of the non-root host user.
+        user: "$UID:$GID"
+        networks:
+            firefox-br-x:
+                ipv4_address: 172.16.240.10
+        volumes:
+            - /tmp/.X11-unix:/tmp/.X11-unix  # Access to XQuartz's host socket provided by XQuartz.
+            - ~/.config/pulse:/home/$USER/.config/pulse  # Accessing Pulseaudio.
+            - ~/Downloads:/home/$USER/Downloads/  # Allows Firefox to download to the host's Downloads folder.
+            - ~/Downloads/Firefox_Docker_Profiles:/home/$USER/.mozilla/firefox/  # Keep Firefox settings/bookmarks...
+        # Environement variables
+        #
+        # For XDG_* environnement variables, see : https://www.freedesktop.org/software/systemd/man/pam_systemd.html
+        # and https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html.
+        #
+        # For the X.org DISPLAY variable, see :
+        # https://www.x.org/archive/X11R6.8.0/doc/X.7.html
+        #
+        # For the PULSE_SERVER variable, see :
+        # https://www.freedesktop.org/wiki/Software/PulseAudio/FAQ/index.html#index5h2
+        environment:
+            - XDG_SESSION_CLASS=user  
+            - XDG_CURRENT_DESKTOP=ubuntu:GNOME
+            - XDG_MENU_PREFIX=gnome-
+            - XDG_SESSION_DESKTOP=ubuntu
+            - XDG_SESSION_TYPE=x11
+            - DISPLAY=host.docker.internal:0
+            - PULSE_SERVER=host.docker.internal
+        build:
+            # Mandatory and optional args
+            #
+            # UID, GID, USERNAME (mandatory)
+            # The user of the container should match that of the host, in particular, its UID, GID because this facilitates the management of permissions (using
+            # chown with UID:GID). For simplicity, it is also interesting that the host and container usernames are
+            # the same (cf. sharing of the Downloads folder and the firefox profile).
+            #
+            # By default, this container use the latest version of Firefox, this can be modified in the dockerfile.
+            # 
+            # UBUNTU_MIRROR_ARCHIVE_HTTP (optional) [tu-chemnitz-ports-http]: https://launchpad.net/ubuntu/+archivemirrors
+            # UBUNTU_MIRROR_ARCHIVE_HTTPS (optional) [tu-chemnitz-ports-https]: https://launchpad.net/ubuntu/+archivemirrors
+            # Value: name of the file located in the ubuntu-archive-mirrors folder (without the .list file extension)
+            dockerfile: Dockerfile-compromised-firefox-x-macos
+            args:
+                UID: $UID
+                GID: $GID
+                USERNAME: $USER
+                UBUNTU_MIRROR_ARCHIVE_HTTP: tu-chemnitz-ports-http
+                UBUNTU_MIRROR_ARCHIVE_HTTPS: tu-chemnitz-ports-https
+                DEBIAN_FRONTEND: noninteractive
+
+# IPv4 private space/IPv6 ULA
+networks:
+    firefox-br-x:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.16.240.0/24
+                  gateway: 172.16.240.1

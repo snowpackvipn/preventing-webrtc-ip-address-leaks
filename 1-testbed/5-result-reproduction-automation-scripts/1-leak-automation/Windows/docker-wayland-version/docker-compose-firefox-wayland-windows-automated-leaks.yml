@@ -1,0 +1,113 @@
+# Docker compose file allowing to launch a Firefox container resistant to WebRTC IP leak. It runs under Wayland.
+#
+# Copyright (C) 2024 Guillaume Nibert <guillaume.nibert@snowpack.eu>,
+#                    Sébastien Tixeuil <sebastien.tixeuil@lip6.fr>,
+#                    Baptiste Polvé <baptiste.polve@snowpack.eu>,
+#                    Nana J. Bakalafoua M'boussi <nana.bakalafoua@snowpack.eu>,
+#                    Xuan Son Nguyen <xuanson.nguyen@snowpack.eu>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+#
+# Maintainer: Guillaume Nibert <guillaume.nibert@snowpack.eu>
+services:
+    firefox-docker-wayland-windows-automated-leaks:
+        # To up container as a non-root user that have the same UID:GID of the non-root host user.
+        # WSL2 default UID:GID = 1000:1000
+        user: "1000:1000"
+        entrypoint: "python3 ./main.py --host-platform windows --web-browser firefox --study 1 - Leaks in popular natively executed web browsers --proxy wireguard --ip 4 --web-browser-containerised --container-window-manager wayland --mode forced_mode_2 --user-consent True"
+        networks:
+            firefox-br-wayland:
+                ipv4_address: 172.16.238.10
+        # AppArmor profile
+        #
+        # Necessary to perform screen sharing and share other variables, such as desktop mode (light/dark)... It would 
+        # be relevant to create an apparmor profile dedicated to this container, inspired by the one for docker-default, 
+        # firefox-snap and/or firefox-normal.
+        # Some ideas : https://apparmor.pujol.io/
+        security_opt:
+            - apparmor:unconfined  # TODO: create a dedicated profile
+        volumes:
+            # https://github.com/microsoft/wslg/blob/main/samples/container/Containers.md
+            # https://stackoverflow.com/questions/73092750/how-to-show-gui-apps-from-docker-desktop-container-on-windows-11
+            - /run/desktop/mnt/host/wslg:/mnt/wslg  # To use Wayland/PulseAudio from WSLg.
+            - $USERPROFILE/Downloads:/home/firefoxdocker/Downloads/  # Allows Firefox to download to the host's Downloads folder.
+            - $USERPROFILE/Downloads/Firefox_Docker_Profiles:/home/firefoxdocker/.mozilla/firefox/  # Keeps Firefox settings/bookmarks...
+            - /dev/video0:/dev/video0  # Access to the webcam
+        # Environement variables
+        #
+        # For XDG_* environnement variables, see : https://www.freedesktop.org/software/systemd/man/pam_systemd.html
+        # and https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html.
+        #
+        # For the DBUS_SESSION_BUS_ADDRESS variable, see :
+        # https://dbus.freedesktop.org/doc/dbus-specification.html#message-bus-types-login
+        #
+        # For the WAYLAND_DISPLAY variable, see :
+        # https://wayland.freedesktop.org/docs/html/ch04.html#sect-Protocol-Wire-Format and
+        # https://discourse.ubuntu.com/t/environment-variables-for-wayland-hackers/12750
+        #
+        # For the PULSE_SERVER variable, see :
+        # https://www.freedesktop.org/wiki/Software/PulseAudio/FAQ/index.html#index5h2
+        environment:
+            - XDG_SESSION_CLASS=user  
+            - XDG_CURRENT_DESKTOP=ubuntu:GNOME
+            - XDG_MENU_PREFIX=gnome-
+            - XDG_SESSION_DESKTOP=ubuntu
+            - XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
+            - XDG_SESSION_TYPE=wayland
+            - WAYLAND_DISPLAY=wayland-0
+            - PULSE_SERVER=unix:/mnt/wslg/runtime-dir/pulse/native
+        # Camera/Webcam
+        #
+        # To check which /dev/video* is the webcam, run : v4l2-ctl --list-devices and change /dev/video0 to the
+        # appropriate one.
+        # More info about /dev/video* devices at : https://tldp.org/HOWTO/Webcam-HOWTO/dev-intro.html
+        # devices:
+            # -  /dev/video0:/dev/video0
+        build:
+            dockerfile: Dockerfile-firefox-wayland-windows-automated-leaks
+            # Mandatory and optional args
+            #
+            # UID, GID, USERNAME (mandatory)
+            # The user of the container should match that of the host, in particular, its UID, GID because the sockets
+            # (wayland, pulse...) go through run/user/UID, this also facilitates the management of permissions (using
+            # chown with UID:GID). For simplicity, it is also interesting that the host and container usernames are
+            # the same (cf. sharing of the Downloads folder and the firefox profile).
+            #
+            # FF_LANG (optional)
+            # The FF_LANG (Firefox language) argument can be modified according to the list of language codes here:
+            # https://download-installer.cdn.mozilla.net/pub/firefox/releases/latest/README.txt
+            # By default, this container use the latest version of Firefox, this can be modified in the dockerfile.
+            #
+            # LINUX_ARCH (mandatory) [linux-i686 | linux-x86_64]: check with : `uname -m`
+            # 
+            # UBUNTU_MIRROR_ARCHIVE (optional) [fr-archive-http]: https://launchpad.net/ubuntu/+archivemirrors
+            # UBUNTU_MIRROR_ARCHIVE_HTTPS (optional) [fr-archive-https]: https://launchpad.net/ubuntu/+archivemirrors
+            args:
+                UID: 1000
+                GID: 1000
+                USERNAME: firefoxdocker
+                FF_LANG: en-GB
+                LINUX_ARCH: linux-x86_64
+                UBUNTU_MIRROR_ARCHIVE_HTTP: fr-archive-http
+                UBUNTU_MIRROR_ARCHIVE_HTTPS: fr-archive-https
+
+# IPv4 private subnet
+networks:
+    firefox-br-wayland:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.16.238.0/24
+                  gateway: 172.16.238.1

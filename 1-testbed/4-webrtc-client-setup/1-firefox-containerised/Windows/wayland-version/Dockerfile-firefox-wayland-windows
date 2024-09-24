@@ -1,0 +1,162 @@
+# Firefox container resistant to WebRTC IP leak [WAYLAND].
+# Copyright (C) 2024 Guillaume Nibert <guillaume.nibert@snowpack.eu>,
+#                    Sébastien Tixeuil <sebastien.tixeuil@lip6.fr>,
+#                    Baptiste Polvé <baptiste.polve@snowpack.eu>,
+#                    Nana J. Bakalafoua M'boussi <nana.bakalafoua@snowpack.eu>,
+#                    Xuan Son Nguyen <xuanson.nguyen@snowpack.eu>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+#
+# The image was created thanks to the valuable previous work of:
+#     - Jessie Frazelle <jess@linux.com> https://hub.docker.com/r/jess/tor-browser/, MIT License,
+#     - Guy Taylor <thebigguy.co.uk@gmail.com> https://github.com/TheBiggerGuy/docker-pulseaudio-example, Unlicense
+#       license, and
+#     - David Ricq <davidricq87@orange.fr> https://github.com/Inglebard/dockerfiles/tree/firefox, MIT
+#       License
+#
+# Description:
+#
+# Firefox docker container running under Wayland natively. It allows you to use the WebRTC API without the inconvenience
+# of the IP address leak when connecting to an anonymization network (Snowpack/VPN/Tor...): only the local IP address 
+# associated with the docker's virtual interface is leaked, along with the public IP address of the anonymity network.
+# In the context of VoIP, WebRTC IP leak is not a vulnerability, this is a protocol design issue.
+# See: https://datatracker.ietf.org/doc/html/rfc8828#name-modes-and-recommendations
+FROM ubuntu:22.04
+
+LABEL maintainer "Guillaume Nibert <guillaume.nibert@snowpack.eu>"
+
+ARG USERNAME
+ARG UID
+ARG GID
+ARG FF_LANG
+ARG LINUX_ARCH
+ARG UBUNTU_MIRROR_ARCHIVE_HTTP
+ARG UBUNTU_MIRROR_ARCHIVE_HTTPS
+ARG DEBIAN_FRONTEND
+
+ENV HOME /home/$USERNAME
+
+# Create a user with the same UID, GID, username as the host. Create a user home directory.
+RUN groupadd --gid $GID $USERNAME \
+    && useradd --uid $UID --gid $USERNAME --shell /bin/bash --create-home $USERNAME
+
+# (Optional) Use of a better/closer Ubuntu mirror: https://launchpad.net/ubuntu/+archivemirrors
+RUN rm /etc/apt/sources.list
+COPY ubuntu-archive-mirrors/$UBUNTU_MIRROR_ARCHIVE_HTTP.list /etc/apt/
+RUN mv /etc/apt/$UBUNTU_MIRROR_ARCHIVE_HTTP.list /etc/apt/sources.list
+
+RUN apt-get update \
+    && apt-get install -y ca-certificates apt-transport-https
+
+RUN rm /etc/apt/sources.list
+COPY ubuntu-archive-mirrors/$UBUNTU_MIRROR_ARCHIVE_HTTPS.list /etc/apt/
+RUN mv /etc/apt/$UBUNTU_MIRROR_ARCHIVE_HTTPS.list /etc/apt/sources.list
+
+# Update system
+RUN apt-get update && \
+    apt-get dist-upgrade -y && \
+    apt-get autoclean -y && \
+    apt-get autoremove -y
+
+# Firefox required libraries: https://www.mozilla.org/firefox/system-requirements.html
+# libc6 (glibc): http://www.linux-m68k.org/faq/glibcinfo.html
+RUN apt-get install -y \
+	libc6 \
+	libgtk-3-0 \
+	libstdc++6 \
+	libglib2.0-0
+
+# Other libraries:
+#     - curl: used to download Firefox and its signature.
+#     - jq: used to filter JSON data (i.e. FF version: https://product-details.mozilla.org/1.0/firefox_versions.json)
+#     - libpci3: https://packages.debian.org/stretch/libpci3, seems to be also required by Firefox
+#     - libegl1: https://www.khronos.org/egl/
+#     - bzip2: used to extract tar.bz2 Firefox binary archive.
+#     - gstreamer1.0-libav & ffmpeg: used to decode audio/video streams (YouTube, VoIP...)
+#     - pipewire: allows the transport of the screen sharing stream of the host screen.
+#     - dirmngr & gnupg: used to verify the signature of Firefox binary.
+#     - fonts-noto-cjk: Chinese, Japanese and Korean Unicode fonts
+RUN apt-get install -y \
+    curl \
+	jq \
+	libpci3 \
+	libegl1 \
+	bzip2 \
+	gstreamer1.0-libav \
+	ffmpeg \
+	dirmngr \
+	gnupg \
+	fonts-noto-cjk \
+	--no-install-recommends \
+	&& rm -rf /var/lib/apt/lists/*
+
+
+# Allows the user to access the camera/webcam (/dev/video0 which is mapped with the /dev/video0 of the host)
+RUN usermod -a -G video $USERNAME
+
+# Download Firefox & check signature and integrity
+WORKDIR /tmp
+
+# Firefox releases FTP base URL
+ARG FF_FTP_BASE_URL="https://ftp.mozilla.org/pub/firefox/releases"
+
+# Used to verify the signature and integrity of Firefox. This is Mozilla's GPG public subkey fingerprint.
+# Source: https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
+#
+###################################################
+########### Epiration date: 2025-05-14 ############
+# To be changed in case of revocation/expiration! #
+###################################################
+ARG FF_SUBKEYFINGERPRINT=0xADD7079479700DCADFDD5337E36D3B13F3D93274
+
+# Notes:
+#     - The PGP subkey fingerprint is downloaded from Mozilla (i.e. from here:
+#       https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/)
+#     - The PGP public key is downloaded from another pubkey server (MIT, OpenPGP.org or Ubuntu.com).
+#
+# Why? Because Mozilla's servers can be compromised just as much as public key servers. If one of the two (or both)
+# is/are compromised, there will be a very strong mismatch between the subkey fingerprint, the public key signature/
+# integrity # of the downloaded file. Of course, nothing is infallible, a compromised Mozilla and a compromised key
+# server can collude, but it is good practice to avoid trusted third parties and single points of failure when possible.
+#
+# /!\ grep "Key fingerprint = ADD7 0794 7970 0DCA DFDD  5337 E36D 3B13 F3D9 3274" /!\
+# /!\ There are two spaces between DFDD and 5337 /!\
+# /!\ The value of the fingerprint should be changed when there is a revocation/expiration of the GPG pubkey. /!\
+RUN cd /tmp \
+	&& export FF_VERSION=$(curl -sS "https://product-details.mozilla.org/1.0/firefox_versions.json" | \
+	   jq -r '.LATEST_FIREFOX_VERSION') \
+    && curl -sSOL "${FF_FTP_BASE_URL}/${FF_VERSION}/${LINUX_ARCH}/${FF_LANG}/firefox-${FF_VERSION}.tar.bz2" \
+	&& curl -sSOL "${FF_FTP_BASE_URL}/${FF_VERSION}/${LINUX_ARCH}/${FF_LANG}/firefox-${FF_VERSION}.tar.bz2.asc" \
+	&& export GNUPGHOME="$(mktemp -d)" \
+	&& for server in $(shuf -e \
+			hkps://pgp.mit.edu \
+			hkps://keys.openpgp.org \
+			hkps://keyserver.ubuntu.com) ; do \
+		gpg --no-tty --keyserver "${server}" --recv-keys ${FF_SUBKEYFINGERPRINT} && break || : ; \
+	done \
+	&& gpg --fingerprint --with-subkey-fingerprints --keyid-format LONG ${FF_SUBKEYFINGERPRINT} | \
+	   grep "Key fingerprint = ADD7 0794 7970 0DCA DFDD  5337 E36D 3B13 F3D9 3274" \
+    && gpg --verify firefox-${FF_VERSION}.tar.bz2.asc firefox-${FF_VERSION}.tar.bz2 \
+	&& tar -vxj -C /opt -f firefox-${FF_VERSION}.tar.bz2 \
+	&& rm -rf firefox-* "$GNUPGHOME"
+
+# Mouse click not working on certain menus with WSLg weston: https://bugzilla.mozilla.org/show_bug.cgi?id=1600584
+COPY firefox-weston-patch/config.js /opt/firefox/
+COPY firefox-weston-patch/config-prefs.js /opt/firefox/defaults/pref/
+
+WORKDIR $HOME
+
+USER 1000:1000
+
+ENTRYPOINT ["/opt/firefox/firefox"]

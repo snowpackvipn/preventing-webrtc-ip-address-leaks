@@ -1,0 +1,50 @@
+#########################
+# Default configuration #
+#########################
+
+Compromised - No user consent
+
+candidate:0 1 UDP 2122187007 172.16.238.10 42541 typ host
+candidate:2 1 UDP 2122252543 fd08:55cf:a0a1::2 52436 typ host
+candidate:4 1 TCP 2105458943 172.16.238.10 9 typ host tcptype active
+candidate:5 1 TCP 2105524479 fd08:55cf:a0a1::2 9 typ host tcptype active
+candidate:0 1 UDP 2122187007 172.16.238.10 48907 typ host
+candidate:3 1 UDP 2122252543 fd08:55cf:a0a1::2 36489 typ host
+candidate:6 1 TCP 2105458943 172.16.238.10 9 typ host tcptype active
+candidate:7 1 TCP 2105524479 fd08:55cf:a0a1::2 9 typ host tcptype active
+candidate:1 1 UDP 1685987327 203.0.113.20 42541 typ srflx raddr 172.16.238.10 rport 42541
+candidate:3 1 UDP 1686052607 2001:db8::20 52436 typ srflx raddr fd08:55cf:a0a1::2 rport 52436
+candidate:1 1 UDP 1685987327 203.0.113.20 48907 typ srflx raddr 172.16.238.10 rport 48907
+candidate:2 1 UDP 92151807 192.0.2.1 65082 typ relay raddr 192.0.2.1 rport 65082
+candidate:4 1 UDP 1686052607 2001:db8::20 36489 typ srflx raddr fd08:55cf:a0a1::2 rport 36489
+candidate:5 1 UDP 92217087 192.0.2.1 65089 typ relay raddr 192.0.2.1 rport 65089
+
+
+Compromised - User consent
+
+candidate:0 1 UDP 2121990399 127.0.0.1 58229 typ host
+candidate:2 1 UDP 2122121471 172.16.238.10 36128 typ host
+candidate:4 1 UDP 2122055935 ::1 45327 typ host
+candidate:6 1 UDP 2122252543 fd08:55cf:a0a1::2 33600 typ host
+candidate:8 1 TCP 2105262335 127.0.0.1 9 typ host tcptype active
+candidate:9 1 TCP 2105393407 172.16.238.10 9 typ host tcptype active
+candidate:10 1 TCP 2105327871 ::1 9 typ host tcptype active
+candidate:11 1 TCP 2105524479 fd08:55cf:a0a1::2 9 typ host tcptype active
+candidate:12 1 TCP 2105458943 fe80::42:acff:fe10:ee0a 9 typ host tcptype active
+candidate:0 1 UDP 2121990399 127.0.0.1 35193 typ host
+candidate:3 1 UDP 2122121471 172.16.238.10 50898 typ host
+candidate:6 1 UDP 2122055935 ::1 42704 typ host
+candidate:9 1 UDP 2122252543 fd08:55cf:a0a1::2 35492 typ host
+candidate:12 1 TCP 2105262335 127.0.0.1 9 typ host tcptype active
+candidate:13 1 TCP 2105393407 172.16.238.10 9 typ host tcptype active
+candidate:14 1 TCP 2105327871 ::1 9 typ host tcptype active
+candidate:15 1 TCP 2105524479 fd08:55cf:a0a1::2 9 typ host tcptype active
+candidate:16 1 TCP 2105458943 fe80::42:acff:fe10:ee0a 9 typ host tcptype active
+candidate:3 1 UDP 1685921791 203.0.113.20 36128 typ srflx raddr 172.16.238.10 rport 36128
+candidate:4 1 UDP 1685921791 203.0.113.20 50898 typ srflx raddr 172.16.238.10 rport 50898
+candidate:5 1 UDP 92086271 192.0.2.1 54176 typ relay raddr 192.0.2.1 rport 54176
+candidate:7 1 UDP 1686052607 2001:db8::20 33600 typ srflx raddr fd08:55cf:a0a1::2 rport 33600
+candidate:10 1 UDP 1686052607 2001:db8::20 35492 typ srflx raddr fd08:55cf:a0a1::2 rport 35492
+candidate:11 1 UDP 92217087 192.0.2.1 64352 typ relay raddr 192.0.2.1 rport 64352
+
+

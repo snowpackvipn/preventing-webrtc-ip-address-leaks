@@ -1,0 +1,30 @@
+#########################
+# Default configuration #
+#########################
+
+Mode 2 - No user consent
+
+candidate:1423417896 1 udp 2122194687 203.0.113.20 56470 typ host generation 0 ufrag kwtl network-id 1 network-cost 50
+candidate:1125724064 1 udp 2122262783 2001:db8::20 64768 typ host generation 0 ufrag kwtl network-id 2 network-cost 50
+candidate:2219171427 1 udp 2122194687 203.0.113.20 55171 typ host generation 0 ufrag at/F network-id 1 network-cost 50
+candidate:2475381739 1 udp 2122262783 2001:db8::20 59751 typ host generation 0 ufrag at/F network-id 2 network-cost 50
+candidate:3405580470 1 udp 41885695 192.0.2.1 54327 typ relay raddr 2001:db8::20 rport 59751 generation 0 ufrag at/F network-id 2 network-cost 50
+candidate:3405580470 1 udp 41820415 192.0.2.1 57422 typ relay raddr 203.0.113.20 rport 55171 generation 0 ufrag at/F network-id 1 network-cost 50
+candidate:2860349116 1 tcp 1518214911 203.0.113.20 9 typ host tcptype active generation 0 ufrag kwtl network-id 1 network-cost 50
+candidate:3182689076 1 tcp 1518283007 2001:db8::20 9 typ host tcptype active generation 0 ufrag kwtl network-id 2 network-cost 50
+candidate:2062486263 1 tcp 1518214911 203.0.113.20 9 typ host tcptype active generation 0 ufrag at/F network-id 1 network-cost 50
+candidate:1830913919 1 tcp 1518283007 2001:db8::20 9 typ host tcptype active generation 0 ufrag at/F network-id 2 network-cost 50
+
+Mode 2 - User consent
+
+candidate:2121359297 1 udp 2122194687 203.0.113.20 60007 typ host generation 0 ufrag Bb7T network-id 1 network-cost 50
+candidate:1774178889 1 udp 2122262783 2001:db8::20 56903 typ host generation 0 ufrag Bb7T network-id 2 network-cost 50
+candidate:999186724 1 udp 2122194687 203.0.113.20 60883 typ host generation 0 ufrag TDgB network-id 1 network-cost 50
+candidate:1119726266 1 udp 2122262783 2001:db8::20 50540 typ host generation 0 ufrag TDgB network-id 2 network-cost 50
+candidate:2279334086 1 udp 41820415 192.0.2.1 60235 typ relay raddr 203.0.113.20 rport 60883 generation 0 ufrag TDgB network-id 1 network-cost 50
+candidate:2279334086 1 udp 41885695 192.0.2.1 57468 typ relay raddr 2001:db8::20 rport 50540 generation 0 ufrag TDgB network-id 2 network-cost 50
+candidate:2161871701 1 tcp 1518214911 203.0.113.20 9 typ host tcptype active generation 0 ufrag Bb7T network-id 1 network-cost 50
+candidate:2534737629 1 tcp 1518283007 2001:db8::20 9 typ host tcptype active generation 0 ufrag Bb7T network-id 2 network-cost 50
+candidate:1161921468 1 tcp 1518214911 203.0.113.20 9 typ host tcptype active generation 0 ufrag TDgB network-id 1 network-cost 50
+candidate:1014122530 1 tcp 1518283007 2001:db8::20 9 typ host tcptype active generation 0 ufrag TDgB network-id 2 network-cost 50
+

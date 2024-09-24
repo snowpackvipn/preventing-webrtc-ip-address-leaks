@@ -1,0 +1,158 @@
+# Firefox container resistant to WebRTC IP leak [X Server].
+# Copyright (C) 2024 Guillaume Nibert <guillaume.nibert@snowpack.eu>,
+#                    Sébastien Tixeuil <sebastien.tixeuil@lip6.fr>,
+#                    Baptiste Polvé <baptiste.polve@snowpack.eu>,
+#                    Nana J. Bakalafoua M'boussi <nana.bakalafoua@snowpack.eu>,
+#                    Xuan Son Nguyen <xuanson.nguyen@snowpack.eu>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+#
+# The image was created thanks to the valuable previous work of:
+#     - Jessie Frazelle <jess@linux.com> https://hub.docker.com/r/jess/tor-browser/, MIT License,
+#     - Guy Taylor <thebigguy.co.uk@gmail.com> https://github.com/TheBiggerGuy/docker-pulseaudio-example, Unlicense
+#       license, and
+#     - David Ricq <davidricq87@orange.fr> https://github.com/Inglebard/dockerfiles/tree/firefox, MIT
+#       License
+#
+# Description:
+#
+# Firefox docker container running under XQuartz. It allows you to use the WebRTC API without the inconvenience
+# of the IP address leak when connecting to an anonymization network (Snowpack/VPN/Tor...): only the local IP address 
+# associated with the docker's virtual interface is leaked, along with the public IP address of the anonymity network.
+# In the context of VoIP, WebRTC IP leak is not a vulnerability, this is a protocol design issue.
+# See: https://datatracker.ietf.org/doc/html/rfc8828#name-modes-and-recommendations
+FROM ubuntu:22.04
+
+LABEL maintainer "Guillaume Nibert <guillaume.nibert@snowpack.eu>"
+
+ARG UID
+ARG GID
+ARG USERNAME
+ARG UBUNTU_MIRROR_ARCHIVE_HTTP
+ARG UBUNTU_MIRROR_ARCHIVE_HTTPS
+ARG DEBIAN_FRONTEND
+
+ENV HOME /home/$USERNAME
+
+# (Optional) Use of a better/closer Ubuntu mirror: https://launchpad.net/ubuntu/+archivemirrors
+RUN rm /etc/apt/sources.list
+COPY ubuntu-archive-mirrors/$UBUNTU_MIRROR_ARCHIVE_HTTP.list /etc/apt/
+RUN mv /etc/apt/$UBUNTU_MIRROR_ARCHIVE_HTTP.list /etc/apt/sources.list
+
+RUN apt-get update \
+    && apt-get install -y ca-certificates apt-transport-https
+
+RUN rm /etc/apt/sources.list
+COPY ubuntu-archive-mirrors/$UBUNTU_MIRROR_ARCHIVE_HTTPS.list /etc/apt/
+RUN mv /etc/apt/$UBUNTU_MIRROR_ARCHIVE_HTTPS.list /etc/apt/sources.list
+
+# Update system and install wget and gnupg
+RUN apt-get update && \
+    apt-get dist-upgrade -y && \
+    apt-get autoclean -y && \
+    apt-get autoremove -y && \
+    apt-get install wget gnupg pulseaudio -y
+
+# Web browser automation with selenium + IP utils
+RUN apt-get install python3 python3-pip iproute2 -y
+
+# Create a user with the same UID, GID, username as the host. Create a user home directory.
+RUN useradd $USERNAME --uid $UID --gid $GID --shell /bin/bash --create-home --home-dir $HOME \
+	&& usermod -aG audio,pulse,pulse-access $USERNAME \
+	&& chown -R $UID:$GID $HOME
+
+# Firefox required libraries: https://www.mozilla.org/firefox/system-requirements.html
+# libc6 (glibc): http://www.linux-m68k.org/faq/glibcinfo.html
+RUN apt-get install -y \
+	libc6 \
+	libgtk-3-0 \
+	libstdc++6 \
+	libglib2.0-0
+
+# Other libraries:
+#     - libpci3: https://packages.debian.org/stretch/libpci3, seems to be also required by Firefox
+#     - libegl1: https://www.khronos.org/egl/
+#     - gstreamer1.0-libav & ffmpeg: used to decode audio/video streams (YouTube, VoIP...)
+#     - libcanberra-gtk3-module: https://freedesktop.org/wiki/Specifications/sound-theme-spec/
+#     - fonts-noto-cjk: Chinese, Japanese and Korean Unicode fonts
+RUN apt-get install -y \
+	libpci3 \
+	libegl1 \
+	gstreamer1.0-libav \
+	ffmpeg \
+	libcanberra-gtk3-module \
+    fonts-noto-cjk \
+	--no-install-recommends
+
+WORKDIR $HOME
+
+# Install Firefox
+COPY firefox-bin/firefox_125.0.3+build1-0ubuntu0.22.04.1~mt1_arm64.deb $HOME
+COPY firefox-bin/firefox-geckodriver_125.0.3+build1-0ubuntu0.22.04.1~mt1_arm64.deb $HOME
+
+RUN apt-get update && apt-get install libpci3 && \
+	apt-get install -f ./firefox_125.0.3+build1-0ubuntu0.22.04.1~mt1_arm64.deb -y && \
+	apt-get install -f ./firefox-geckodriver_125.0.3+build1-0ubuntu0.22.04.1~mt1_arm64.deb -y && \
+	rm ./firefox_125.0.3+build1-0ubuntu0.22.04.1~mt1_arm64.deb && \
+	rm ./firefox-geckodriver_125.0.3+build1-0ubuntu0.22.04.1~mt1_arm64.deb && \
+    rm -rf /var/lib/apt/lists/*
+
+USER $UID:$GID
+
+RUN pip install --no-cache-dir --upgrade pip && \
+	pip install --no-cache-dir selenium paramiko
+
+USER 0:0
+
+COPY main.py $HOME
+COPY leak.py $HOME
+COPY constants.py $HOME
+
+RUN mkdir $HOME/gather_ice_candidates
+COPY gather_ice_candidates/gather_ice_candidates.js $HOME/gather_ice_candidates/
+COPY gather_ice_candidates/index.html $HOME/gather_ice_candidates/
+
+RUN mkdir $HOME/utils
+COPY utils/__init__.py $HOME/utils/
+COPY utils/call_docker_compose.py $HOME/utils/
+COPY utils/ip_addr.py $HOME/utils/
+COPY utils/local_tshak_capture.py $HOME/utils/
+COPY utils/remote_ssh_tshark.py $HOME/utils/
+COPY utils/script_parser.py $HOME/utils/
+COPY utils/storage_init.py $HOME/utils/
+
+RUN chown $UID:$GID main.py && \
+	chown $UID:$GID leak.py && \
+	chown $UID:$GID constants.py && \
+	chown $UID:$GID gather_ice_candidates/gather_ice_candidates.js && \
+	chown $UID:$GID gather_ice_candidates/index.html && \
+	chown $UID:$GID utils/__init__.py && \
+	chown $UID:$GID utils/call_docker_compose.py && \
+	chown $UID:$GID utils/ip_addr.py && \
+	chown $UID:$GID utils/local_tshak_capture.py && \
+	chown $UID:$GID utils/remote_ssh_tshark.py && \
+	chown $UID:$GID utils/script_parser.py && \
+	chown $UID:$GID utils/storage_init.py && \
+	chmod +x main.py && \
+	chmod +x leak.py && \
+	chmod +x constants.py && \
+	chmod +x utils/__init__.py && \
+	chmod +x utils/call_docker_compose.py && \
+	chmod +x utils/ip_addr.py && \
+	chmod +x utils/local_tshak_capture.py && \
+	chmod +x utils/remote_ssh_tshark.py && \
+	chmod +x utils/script_parser.py && \
+	chmod +x utils/storage_init.py
+
+USER $UID:$GID

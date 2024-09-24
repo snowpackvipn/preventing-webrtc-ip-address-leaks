@@ -1,0 +1,96 @@
+#########################
+# Default configuration #
+#########################
+
+Mode 2.2 - No user consent
+
+candidate:1199768435 1 udp 2113937151 16b9a8b3-65a5-4e8c-a99c-2e9658963a83.local 49748 typ host generation 0 ufrag AKkD network-cost 999
+candidate:1998979350 1 udp 2113939711 71ba8cb8-0ccd-433f-b427-246d9b07f6fa.local 34357 typ host generation 0 ufrag AKkD network-cost 999
+candidate:1376029557 1 udp 2113937151 16b9a8b3-65a5-4e8c-a99c-2e9658963a83.local 39673 typ host generation 0 ufrag A4l+ network-cost 999
+candidate:1123616666 1 udp 2113939711 71ba8cb8-0ccd-433f-b427-246d9b07f6fa.local 60552 typ host generation 0 ufrag A4l+ network-cost 999
+candidate:4117400036 1 udp 1677729535 203.0.113.20 49748 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag AKkD network-cost 999
+candidate:3517724862 1 udp 1677732095 2001:db8::20 34357 typ srflx raddr :: rport 0 generation 0 ufrag AKkD network-cost 999
+candidate:1956104255 1 udp 1677732095 2001:db8::20 60552 typ srflx raddr :: rport 0 generation 0 ufrag A4l+ network-cost 999
+candidate:109393100 1 udp 1677729535 203.0.113.20 39673 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag A4l+ network-cost 999
+candidate:3530988747 1 udp 33562879 192.0.2.1 50851 typ relay raddr 203.0.113.20 rport 39673 generation 0 ufrag A4l+ network-cost 999
+candidate:3530988747 1 udp 33562623 192.0.2.1 51556 typ relay raddr 2001:db8::20 rport 60552 generation 0 ufrag A4l+ network-cost 999
+
+Mode 1 - User consent
+
+candidate:2313565984 1 udp 2122194687 203.0.113.20 51776 typ host generation 0 ufrag NIFK network-id 1
+candidate:2788326906 1 udp 2122063615 203.0.113.30 49585 typ host generation 0 ufrag NIFK network-id 3 network-cost 10
+candidate:3108189509 1 udp 2122262783 2001:db8::20 51850 typ host generation 0 ufrag NIFK network-id 2
+candidate:539854684 1 udp 2122131711 2001:db8::30 37653 typ host generation 0 ufrag NIFK network-id 4 network-cost 10
+candidate:1748429759 1 udp 2122194687 203.0.113.20 52280 typ host generation 0 ufrag zM4A network-id 1
+candidate:3540039299 1 udp 2122063615 203.0.113.30 47016 typ host generation 0 ufrag zM4A network-id 3 network-cost 10
+candidate:2026596176 1 udp 2122262783 2001:db8::20 55749 typ host generation 0 ufrag zM4A network-id 2
+candidate:522765395 1 udp 2122131711 2001:db8::30 58323 typ host generation 0 ufrag zM4A network-id 4 network-cost 10
+candidate:3896835073 1 udp 41820415 192.0.2.1 55701 typ relay raddr 203.0.113.20 rport 52280 generation 0 ufrag zM4A network-id 1
+candidate:3896835073 1 udp 41885695 192.0.2.1 59896 typ relay raddr 2001:db8::20 rport 55749 generation 0 ufrag zM4A network-id 2
+candidate:3896835073 1 udp 41689343 192.0.2.1 49345 typ relay raddr 203.0.113.30 rport 47016 generation 0 ufrag zM4A network-id 3 network-cost 10
+candidate:3896835073 1 udp 41754623 192.0.2.1 62727 typ relay raddr 2001:db8::30 rport 58323 generation 0 ufrag zM4A network-id 4 network-cost 10
+candidate:2001527732 1 tcp 1518214911 203.0.113.20 9 typ host tcptype active generation 0 ufrag NIFK network-id 1
+candidate:1486399854 1 tcp 1518083839 203.0.113.30 9 typ host tcptype active generation 0 ufrag NIFK network-id 3 network-cost 10
+candidate:1206510033 1 tcp 1518283007 2001:db8::20 9 typ host tcptype active generation 0 ufrag NIFK network-id 2
+candidate:3733410760 1 tcp 1518151935 2001:db8::30 9 typ host tcptype active generation 0 ufrag NIFK network-id 4 network-cost 10
+candidate:385419559 1 tcp 1518214911 203.0.113.20 9 typ host tcptype active generation 0 ufrag zM4A network-id 1
+candidate:2916045851 1 tcp 1518083839 203.0.113.30 9 typ host tcptype active generation 0 ufrag zM4A network-id 3 network-cost 10
+candidate:100959688 1 tcp 1518283007 2001:db8::20 9 typ host tcptype active generation 0 ufrag zM4A network-id 2
+candidate:1642538699 1 tcp 1518151935 2001:db8::30 9 typ host tcptype active generation 0 ufrag zM4A network-id 4 network-cost 10
+
+########################
+# Forced configuration #
+########################
+
+Mode 2 - No user consent
+
+candidate:232275443 1 udp 2113937151 203.0.113.20 43926 typ host generation 0 ufrag mHZA network-cost 999
+candidate:1031618454 1 udp 2113939711 2001:db8::20 37719 typ host generation 0 ufrag mHZA network-cost 999
+candidate:1112641009 1 udp 2113937151 203.0.113.20 44190 typ host generation 0 ufrag vPRB network-cost 999
+candidate:1928630164 1 udp 2113939711 2001:db8::20 56461 typ host generation 0 ufrag vPRB network-cost 999
+candidate:4038592358 1 udp 1677729535 203.0.113.20 44190 typ srflx raddr 203.0.113.20 rport 44190 generation 0 ufrag vPRB network-cost 999
+candidate:3565073980 1 udp 1677732095 2001:db8::20 56461 typ srflx raddr 2001:db8::20 rport 56461 generation 0 ufrag vPRB network-cost 999
+candidate:2616657470 1 udp 1677732095 2001:db8::20 37719 typ srflx raddr 2001:db8::20 rport 37719 generation 0 ufrag mHZA network-cost 999
+candidate:3207706468 1 udp 1677729535 203.0.113.20 43926 typ srflx raddr 203.0.113.20 rport 43926 generation 0 ufrag mHZA network-cost 999
+candidate:1846042989 1 udp 33562623 192.0.2.1 50107 typ relay raddr 2001:db8::20 rport 56461 generation 0 ufrag vPRB network-cost 999
+candidate:1846042989 1 udp 33562879 192.0.2.1 63544 typ relay raddr 203.0.113.20 rport 44190 generation 0 ufrag vPRB network-cost 999
+
+Mode 2 - User consent
+
+candidate:2992978787 1 udp 2113937151 203.0.113.20 50486 typ host generation 0 ufrag I1db network-cost 999
+candidate:2727917452 1 udp 2113939711 2001:db8::20 53521 typ host generation 0 ufrag I1db network-cost 999
+candidate:2510251257 1 udp 2113937151 203.0.113.20 38844 typ host generation 0 ufrag ssZq network-cost 999
+candidate:2772067996 1 udp 2113939711 2001:db8::20 54875 typ host generation 0 ufrag ssZq network-cost 999
+candidate:2499180585 1 udp 1677732095 2001:db8::20 53521 typ srflx raddr 2001:db8::20 rport 53521 generation 0 ufrag I1db network-cost 999
+candidate:3873735898 1 udp 1677729535 203.0.113.20 50486 typ srflx raddr 203.0.113.20 rport 50486 generation 0 ufrag I1db network-cost 999
+candidate:61890356 1 udp 1677732095 2001:db8::20 54875 typ srflx raddr 2001:db8::20 rport 54875 generation 0 ufrag ssZq network-cost 999
+candidate:3116796005 1 udp 33562879 192.0.2.1 55599 typ relay raddr 203.0.113.20 rport 38844 generation 0 ufrag ssZq network-cost 999
+candidate:3116796005 1 udp 33562623 192.0.2.1 59463 typ relay raddr 2001:db8::20 rport 54875 generation 0 ufrag ssZq network-cost 999
+candidate:662105710 1 udp 1677729535 203.0.113.20 38844 typ srflx raddr 203.0.113.20 rport 38844 generation 0 ufrag ssZq network-cost 999
+
+Mode 3 - No user consent
+
+candidate:657458823 1 udp 1677732095 2001:db8::20 59939 typ srflx raddr :: rport 0 generation 0 ufrag jiRA network-cost 999
+candidate:1428355700 1 udp 1677729535 203.0.113.20 44292 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag jiRA network-cost 999
+candidate:3946468563 1 udp 1677729535 203.0.113.20 38738 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag iPMd network-cost 999
+candidate:3489457545 1 udp 1677732095 2001:db8::20 56253 typ srflx raddr :: rport 0 generation 0 ufrag iPMd network-cost 999
+candidate:1971991256 1 udp 33562623 192.0.2.1 54487 typ relay raddr 2001:db8::20 rport 56253 generation 0 ufrag iPMd network-cost 999
+candidate:1971991256 1 udp 33562879 192.0.2.1 61082 typ relay raddr 203.0.113.20 rport 38738 generation 0 ufrag iPMd network-cost 999
+
+Mode 3 - User consent
+
+candidate:1924344756 1 udp 1677729535 203.0.113.20 43501 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag gCr8 network-cost 999
+candidate:1450547950 1 udp 1677732095 2001:db8::20 56496 typ srflx raddr :: rport 0 generation 0 ufrag gCr8 network-cost 999
+candidate:3816638066 1 udp 1677732095 2001:db8::20 44296 typ srflx raddr :: rport 0 generation 0 ufrag LQes network-cost 999
+candidate:1167856262 1 udp 33562623 192.0.2.1 53630 typ relay raddr 2001:db8::20 rport 44296 generation 0 ufrag LQes network-cost 999
+candidate:1167856262 1 udp 33562879 192.0.2.1 64264 typ relay raddr 203.0.113.20 rport 48992 generation 0 ufrag LQes network-cost 999
+candidate:2440018561 1 udp 1677729535 203.0.113.20 48992 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag LQes network-cost 999
+
+Mode 4 - No user consent
+
+No ICE candidate found.
+
+Mode 4 - User consent
+
+No ICE candidate found.
+

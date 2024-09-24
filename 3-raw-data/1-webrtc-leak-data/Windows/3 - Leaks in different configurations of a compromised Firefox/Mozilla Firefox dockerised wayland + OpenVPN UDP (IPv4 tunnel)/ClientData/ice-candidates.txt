@@ -1,0 +1,34 @@
+#########################
+# Default configuration #
+#########################
+
+Compromised - No user consent
+
+candidate:0 1 UDP 2122252543 172.16.238.10 60487 typ host
+candidate:2 1 TCP 2105524479 172.16.238.10 9 typ host tcptype active
+candidate:0 1 UDP 2122252543 172.16.238.10 43797 typ host
+candidate:3 1 TCP 2105524479 172.16.238.10 9 typ host tcptype active
+candidate:1 1 UDP 1686052863 198.51.100.1 7579 typ srflx raddr 172.16.238.10 rport 60487
+candidate:1 1 UDP 1686052863 198.51.100.1 4926 typ srflx raddr 172.16.238.10 rport 43797
+candidate:2 1 UDP 92217343 192.0.2.1 55466 typ relay raddr 192.0.2.1 rport 55466
+
+
+Compromised - User consent
+
+candidate:0 1 UDP 2122121471 127.0.0.1 44823 typ host
+candidate:2 1 UDP 2122252543 172.16.238.10 50678 typ host
+candidate:4 1 UDP 2122187007 ::1 37915 typ host
+candidate:6 1 TCP 2105393407 127.0.0.1 9 typ host tcptype active
+candidate:7 1 TCP 2105524479 172.16.238.10 9 typ host tcptype active
+candidate:8 1 TCP 2105458943 ::1 9 typ host tcptype active
+candidate:0 1 UDP 2122121471 127.0.0.1 57182 typ host
+candidate:3 1 UDP 2122252543 172.16.238.10 58154 typ host
+candidate:6 1 UDP 2122187007 ::1 41983 typ host
+candidate:9 1 TCP 2105393407 127.0.0.1 9 typ host tcptype active
+candidate:10 1 TCP 2105524479 172.16.238.10 9 typ host tcptype active
+candidate:11 1 TCP 2105458943 ::1 9 typ host tcptype active
+candidate:3 1 UDP 1686052863 198.51.100.1 4538 typ srflx raddr 172.16.238.10 rport 50678
+candidate:4 1 UDP 1686052863 198.51.100.1 15800 typ srflx raddr 172.16.238.10 rport 58154
+candidate:5 1 UDP 92217343 192.0.2.1 60917 typ relay raddr 192.0.2.1 rport 60917
+
+

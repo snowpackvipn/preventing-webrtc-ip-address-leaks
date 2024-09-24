@@ -1,0 +1,44 @@
+#########################
+# Default configuration #
+#########################
+
+Compromised - No user consent
+
+candidate:0 1 UDP 2122187007 203.0.113.20 35037 typ host
+candidate:2 1 UDP 2122252543 2001:db8::20 34331 typ host
+candidate:4 1 TCP 2105458943 203.0.113.20 9 typ host tcptype active
+candidate:5 1 TCP 2105524479 2001:db8::20 9 typ host tcptype active
+candidate:0 1 UDP 2122187007 203.0.113.20 58535 typ host
+candidate:3 1 UDP 2122252543 2001:db8::20 44075 typ host
+candidate:6 1 TCP 2105458943 203.0.113.20 9 typ host tcptype active
+candidate:7 1 TCP 2105524479 2001:db8::20 9 typ host tcptype active
+candidate:2 1 UDP 92151807 192.0.2.1 52696 typ relay raddr 192.0.2.1 rport 52696
+candidate:5 1 UDP 92217087 192.0.2.1 60308 typ relay raddr 192.0.2.1 rport 60308
+
+Compromised - User consent
+
+candidate:0 1 UDP 2121990399 127.0.0.1 59452 typ host
+candidate:2 1 UDP 2122187007 203.0.113.20 46275 typ host
+candidate:4 1 UDP 2122055935 203.0.113.30 58958 typ host
+candidate:6 1 UDP 2122252543 2001:db8::20 37120 typ host
+candidate:8 1 UDP 2122121471 2001:db8::30 52702 typ host
+candidate:10 1 TCP 2105262335 127.0.0.1 9 typ host tcptype active
+candidate:11 1 TCP 2105458943 203.0.113.20 9 typ host tcptype active
+candidate:12 1 TCP 2105327871 203.0.113.30 9 typ host tcptype active
+candidate:13 1 TCP 2105524479 2001:db8::20 9 typ host tcptype active
+candidate:14 1 TCP 2105393407 2001:db8::30 9 typ host tcptype active
+candidate:0 1 UDP 2121990399 127.0.0.1 43339 typ host
+candidate:3 1 UDP 2122187007 203.0.113.20 51420 typ host
+candidate:6 1 UDP 2122055935 203.0.113.30 55601 typ host
+candidate:9 1 UDP 2122252543 2001:db8::20 33185 typ host
+candidate:12 1 UDP 2122121471 2001:db8::30 57930 typ host
+candidate:15 1 TCP 2105262335 127.0.0.1 9 typ host tcptype active
+candidate:16 1 TCP 2105458943 203.0.113.20 9 typ host tcptype active
+candidate:17 1 TCP 2105327871 203.0.113.30 9 typ host tcptype active
+candidate:18 1 TCP 2105524479 2001:db8::20 9 typ host tcptype active
+candidate:19 1 TCP 2105393407 2001:db8::30 9 typ host tcptype active
+candidate:5 1 UDP 92151807 192.0.2.1 62599 typ relay raddr 192.0.2.1 rport 62599
+candidate:11 1 UDP 92217087 192.0.2.1 56581 typ relay raddr 192.0.2.1 rport 56581
+candidate:8 1 UDP 92020735 192.0.2.1 54372 typ relay raddr 192.0.2.1 rport 54372
+candidate:14 1 UDP 92086015 192.0.2.1 65068 typ relay raddr 192.0.2.1 rport 65068
+

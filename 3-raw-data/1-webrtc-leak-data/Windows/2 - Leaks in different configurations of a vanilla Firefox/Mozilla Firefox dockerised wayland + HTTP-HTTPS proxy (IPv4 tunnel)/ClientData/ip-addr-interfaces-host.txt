@@ -1,0 +1,48 @@
+
+Windows IP Configuration
+
+
+Unknown adapter OpenVPN Wintun:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : anon.ym
+   IPv6 Address. . . . . . . . . . . : 2001:db8::21
+   Temporary IPv6 Address. . . . . . : 2001:db8::20
+   Link-local IPv6 Address . . . . . : fe80::bfcb:ccf:643a:d921%6
+   IPv4 Address. . . . . . . . . . . : 203.0.113.20
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : fe80::200:cff:fe9f:f286%6
+                                       203.0.113.1
+
+Unknown adapter OpenVPN TAP-Windows6:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+
+Unknown adapter OpenVPN Data Channel Offload:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+
+Wireless LAN adapter Wi-Fi:
+
+   Connection-specific DNS Suffix  . : anon.ym
+   IPv6 Address. . . . . . . . . . . : 2001:db8::31
+   Temporary IPv6 Address. . . . . . : 2001:db8::30
+   Link-local IPv6 Address . . . . . : fe80::e6d7:2d04:cb94:6a15%8
+   IPv4 Address. . . . . . . . . . . : 203.0.113.30
+   Subnet Mask . . . . . . . . . . . : 255.255.240.0
+   Default Gateway . . . . . . . . . : fe80::200:cff:fe9f:f477%8
+                                       203.0.113.1
+
+Ethernet adapter vEthernet (WSL (Hyper-V firewall)):
+
+   Connection-specific DNS Suffix  . : 
+   Link-local IPv6 Address . . . . . : fe80::b0aa:6e04:37e:49e9%53
+   IPv4 Address. . . . . . . . . . . : 172.31.224.1
+   Subnet Mask . . . . . . . . . . . : 255.255.240.0
+   Default Gateway . . . . . . . . . : 

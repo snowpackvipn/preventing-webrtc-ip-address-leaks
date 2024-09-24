@@ -1,0 +1,110 @@
+#########################
+# Default configuration #
+#########################
+
+Mode 2.2 - No user consent
+
+candidate:647946700 1 udp 2113937151 dc6af13d-d99b-4159-a6ac-71b6e539b4a6.local 57403 typ host generation 0 ufrag mICZ network-cost 999
+candidate:3952765111 1 udp 2113939711 517034a3-048f-43cd-988b-7b1a5efbc798.local 57404 typ host generation 0 ufrag mICZ network-cost 999
+candidate:1664505286 1 udp 2113937151 dc6af13d-d99b-4159-a6ac-71b6e539b4a6.local 57405 typ host generation 0 ufrag Qh7/ network-cost 999
+candidate:2754411003 1 udp 2113939711 517034a3-048f-43cd-988b-7b1a5efbc798.local 57406 typ host generation 0 ufrag Qh7/ network-cost 999
+candidate:4257066462 1 udp 1677732095 2001:db8::20 57406 typ srflx raddr :: rport 0 generation 0 ufrag Qh7/ network-cost 999
+candidate:3648724100 1 udp 1677729535 203.0.113.20 57405 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag Qh7/ network-cost 999
+candidate:3152127544 1 udp 1677729535 203.0.113.20 57403 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag mICZ network-cost 999
+candidate:3388168907 1 udp 1677732095 2001:db8::20 57404 typ srflx raddr :: rport 0 generation 0 ufrag mICZ network-cost 999
+candidate:1204517519 1 udp 33562623 192.0.2.1 61762 typ relay raddr 2001:db8::20 rport 57406 generation 0 ufrag Qh7/ network-cost 999
+candidate:1204517519 1 udp 33562879 192.0.2.1 54022 typ relay raddr 203.0.113.20 rport 57405 generation 0 ufrag Qh7/ network-cost 999
+
+Mode 1 - User consent
+
+candidate:1926562764 1 udp 2122129151 203.0.113.20 56786 typ host generation 0 ufrag 8THb network-id 1
+candidate:1924056788 1 udp 2122063615 172.31.224.1 56787 typ host generation 0 ufrag 8THb network-id 7
+candidate:1180866291 1 udp 2121867007 203.0.113.30 56788 typ host generation 0 ufrag 8THb network-id 4 network-cost 10
+candidate:4085209090 1 udp 2122262783 2001:db8::21 56789 typ host generation 0 ufrag 8THb network-id 2
+candidate:2707090233 1 udp 2122197247 2001:db8::20 56790 typ host generation 0 ufrag 8THb network-id 3
+candidate:2546603593 1 udp 2122000639 2001:db8::31 56791 typ host generation 0 ufrag 8THb network-id 5 network-cost 10
+candidate:2811089027 1 udp 2121935103 2001:db8::30 56792 typ host generation 0 ufrag 8THb network-id 6 network-cost 10
+candidate:3836188131 1 udp 2122129151 203.0.113.20 56793 typ host generation 0 ufrag Eha5 network-id 1
+candidate:4157306480 1 udp 2122063615 172.31.224.1 56794 typ host generation 0 ufrag Eha5 network-id 7
+candidate:1391791947 1 udp 2121867007 203.0.113.30 56795 typ host generation 0 ufrag Eha5 network-id 4 network-cost 10
+candidate:2566574095 1 udp 2122262783 2001:db8::21 56796 typ host generation 0 ufrag Eha5 network-id 2
+candidate:698555544 1 udp 2122197247 2001:db8::20 56797 typ host generation 0 ufrag Eha5 network-id 3
+candidate:2039545177 1 udp 2122000639 2001:db8::31 56798 typ host generation 0 ufrag Eha5 network-id 5 network-cost 10
+candidate:34705713 1 udp 2121935103 2001:db8::30 56799 typ host generation 0 ufrag Eha5 network-id 6 network-cost 10
+candidate:2905307664 1 udp 41885695 192.0.2.1 65164 typ relay raddr 2001:db8::21 rport 56796 generation 0 ufrag Eha5 network-id 2
+candidate:2905307664 1 udp 41820159 192.0.2.1 51822 typ relay raddr 2001:db8::20 rport 56797 generation 0 ufrag Eha5 network-id 3
+candidate:2905307664 1 udp 41558015 192.0.2.1 59933 typ relay raddr 2001:db8::30 rport 56799 generation 0 ufrag Eha5 network-id 6 network-cost 10
+candidate:2905307664 1 udp 41623551 192.0.2.1 64551 typ relay raddr 2001:db8::31 rport 56798 generation 0 ufrag Eha5 network-id 5 network-cost 10
+candidate:206251713 1 tcp 1518149375 203.0.113.20 9 typ host tcptype active generation 0 ufrag 8THb network-id 1
+candidate:204530649 1 tcp 1518083839 172.31.224.1 9 typ host tcptype active generation 0 ufrag 8THb network-id 7
+candidate:956085246 1 tcp 1517887231 203.0.113.30 9 typ host tcptype active generation 0 ufrag 8THb network-id 4 network-cost 10
+candidate:2380365071 1 tcp 1518283007 2001:db8::21 9 typ host tcptype active generation 0 ufrag 8THb network-id 2
+candidate:3754217012 1 tcp 1518217471 2001:db8::20 9 typ host tcptype active generation 0 ufrag 8THb network-id 3
+candidate:3914609476 1 tcp 1518020863 2001:db8::31 9 typ host tcptype active generation 0 ufrag 8THb network-id 5 network-cost 10
+candidate:3641963918 1 tcp 1517955327 2001:db8::30 9 typ host tcptype active generation 0 ufrag 8THb network-id 6 network-cost 10
+candidate:2590537595 1 tcp 1518149375 203.0.113.20 9 typ host tcptype active generation 0 ufrag Eha5 network-id 1
+candidate:2298778856 1 tcp 1518083839 172.31.224.1 9 typ host tcptype active generation 0 ufrag Eha5 network-id 7
+candidate:742059475 1 tcp 1517887231 203.0.113.30 9 typ host tcptype active generation 0 ufrag Eha5 network-id 4 network-cost 10
+candidate:3862246039 1 tcp 1518283007 2001:db8::21 9 typ host tcptype active generation 0 ufrag Eha5 network-id 2
+candidate:1466760704 1 tcp 1518217471 2001:db8::20 9 typ host tcptype active generation 0 ufrag Eha5 network-id 3
+candidate:123674561 1 tcp 1518020863 2001:db8::31 9 typ host tcptype active generation 0 ufrag Eha5 network-id 5 network-cost 10
+candidate:2094953385 1 tcp 1517955327 2001:db8::30 9 typ host tcptype active generation 0 ufrag Eha5 network-id 6 network-cost 10
+candidate:2905307664 1 udp 41754879 192.0.2.1 58340 typ relay raddr 203.0.113.20 rport 56793 generation 0 ufrag Eha5 network-id 1
+candidate:2905307664 1 udp 41492735 192.0.2.1 61711 typ relay raddr 203.0.113.30 rport 56795 generation 0 ufrag Eha5 network-id 4 network-cost 10
+
+########################
+# Forced configuration #
+########################
+
+Mode 2 - No user consent
+
+candidate:1835593312 1 udp 2113937151 203.0.113.20 57403 typ host generation 0 ufrag ejGT network-cost 999
+candidate:2859614813 1 udp 2113939711 2001:db8::20 57404 typ host generation 0 ufrag ejGT network-cost 999
+candidate:939243230 1 udp 2113937151 203.0.113.20 57405 typ host generation 0 ufrag 5m26 network-cost 999
+candidate:4041284323 1 udp 2113939711 2001:db8::20 57406 typ host generation 0 ufrag 5m26 network-cost 999
+candidate:2842709702 1 udp 1677732095 2001:db8::20 57406 typ srflx raddr 2001:db8::20 rport 57406 generation 0 ufrag 5m26 network-cost 999
+candidate:2377580444 1 udp 1677729535 203.0.113.20 57405 typ srflx raddr 203.0.113.20 rport 57405 generation 0 ufrag 5m26 network-cost 999
+candidate:3609569058 1 udp 1677729535 203.0.113.20 57403 typ srflx raddr 203.0.113.20 rport 57403 generation 0 ufrag ejGT network-cost 999
+candidate:4091745912 1 udp 1677732095 2001:db8::20 57404 typ srflx raddr 2001:db8::20 rport 57404 generation 0 ufrag ejGT network-cost 999
+candidate:319199639 1 udp 33562879 192.0.2.1 62326 typ relay raddr 203.0.113.20 rport 57408 generation 0 ufrag 5m26 network-cost 999
+candidate:319199639 1 udp 33562623 192.0.2.1 61197 typ relay raddr 2001:db8::20 rport 57407 generation 0 ufrag 5m26 network-cost 999
+
+Mode 2 - User consent
+
+candidate:4254359366 1 udp 2113937151 203.0.113.20 59073 typ host generation 0 ufrag L2Cx network-cost 999
+candidate:814798397 1 udp 2113939711 2001:db8::20 59074 typ host generation 0 ufrag L2Cx network-cost 999
+candidate:318366785 1 udp 1677732095 2001:db8::20 59074 typ srflx raddr 2001:db8::20 rport 59074 generation 0 ufrag L2Cx network-cost 999
+candidate:541916071 1 udp 2113937151 203.0.113.20 59077 typ host generation 0 ufrag k8sL network-cost 999
+candidate:3980948188 1 udp 2113939711 2001:db8::20 59078 typ host generation 0 ufrag k8sL network-cost 999
+candidate:1626020018 1 udp 1677729535 203.0.113.20 59073 typ srflx raddr 203.0.113.20 rport 59073 generation 0 ufrag L2Cx network-cost 999
+candidate:3174284371 1 udp 1677729535 203.0.113.20 59077 typ srflx raddr 203.0.113.20 rport 59077 generation 0 ufrag k8sL network-cost 999
+candidate:3475062944 1 udp 1677732095 2001:db8::20 59078 typ srflx raddr 2001:db8::20 rport 59078 generation 0 ufrag k8sL network-cost 999
+candidate:1774195796 1 udp 33562879 192.0.2.1 60103 typ relay raddr 203.0.113.20 rport 59077 generation 0 ufrag k8sL network-cost 999
+candidate:1774195796 1 udp 33562623 192.0.2.1 57273 typ relay raddr 2001:db8::20 rport 59078 generation 0 ufrag k8sL network-cost 999
+
+Mode 3 - No user consent
+
+candidate:581130578 1 udp 1677729535 203.0.113.20 52441 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag NBLk network-cost 999
+candidate:524844901 1 udp 1677732095 2001:db8::20 52444 typ srflx raddr :: rport 0 generation 0 ufrag /VtA network-cost 999
+candidate:107341832 1 udp 1677732095 2001:db8::20 52442 typ srflx raddr :: rport 0 generation 0 ufrag NBLk network-cost 999
+candidate:181602723 1 udp 1677729535 203.0.113.20 52443 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag /VtA network-cost 999
+candidate:1112272064 1 udp 33562623 192.0.2.1 62142 typ relay raddr 2001:db8::20 rport 52444 generation 0 ufrag /VtA network-cost 999
+candidate:1112272064 1 udp 33562879 192.0.2.1 56109 typ relay raddr 203.0.113.20 rport 52443 generation 0 ufrag /VtA network-cost 999
+
+Mode 3 - User consent
+
+candidate:3162116024 1 udp 1677732095 2001:db8::20 59560 typ srflx raddr :: rport 0 generation 0 ufrag tbvL network-cost 999
+candidate:2562506466 1 udp 1677729535 203.0.113.20 59559 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag tbvL network-cost 999
+candidate:3959345920 1 udp 1677732095 2001:db8::20 59564 typ srflx raddr :: rport 0 generation 0 ufrag K0xW network-cost 999
+candidate:2582392819 1 udp 1677729535 203.0.113.20 59563 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag K0xW network-cost 999
+candidate:1293912052 1 udp 33562879 192.0.2.1 62406 typ relay raddr 203.0.113.20 rport 59563 generation 0 ufrag K0xW network-cost 999
+candidate:1293912052 1 udp 33562623 192.0.2.1 60664 typ relay raddr 2001:db8::20 rport 59564 generation 0 ufrag K0xW network-cost 999
+
+Mode 4 - No user consent
+
+No ICE candidate found.
+
+Mode 4 - User consent
+
+No ICE candidate found.
+

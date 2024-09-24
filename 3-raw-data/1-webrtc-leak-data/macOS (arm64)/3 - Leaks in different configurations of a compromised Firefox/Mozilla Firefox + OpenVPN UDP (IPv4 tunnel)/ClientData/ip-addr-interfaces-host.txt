@@ -1,0 +1,31 @@
+lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384
+	inet 127.0.0.1/8 lo0
+	inet6 ::1/128
+	inet6 fe80::1/64 scopeid 0x1
+ap1: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether be:3e:53:8a:0b:68
+	inet6 fe80::bc3e:53ff:fe8a:b68/64 scopeid 0xb
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether 00:00:5e:00:53:03
+	inet 203.0.113.30/20 brd 203.0.113.255 en0
+awdl0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether de:2d:ab:a7:3b:fc
+	inet6 fe80::dc2d:abff:fea7:3bfc/64 scopeid 0xd
+llw0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether de:2d:ab:a7:3b:fc
+	inet6 fe80::dc2d:abff:fea7:3bfc/64 scopeid 0xe
+utun0: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1500
+	inet6 fe80::cdff:1cb1:183c:1d60/64 scopeid 0xf
+utun1: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1380
+	inet6 fe80::f9f7:3b9a:d4ba:cdf/64 scopeid 0x10
+utun2: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 2000
+	inet6 fe80::9be8:8a92:eb34:daab/64 scopeid 0x11
+utun3: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1000
+	inet6 fe80::ce81:b1c:bd2c:69e/64 scopeid 0x12
+en10: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether 00:00:5e:00:53:02
+	inet 203.0.113.20/24 brd 203.0.113.255 en10
+utun4: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1500
+	inet 10.7.0.3 --> 10.7.0.3/24 utun4
+	inet6 fe80::9e3e:53ff:fe8a:b68/64 scopeid 0x14
+	inet6 fddd:1194:1194:1194::3/112

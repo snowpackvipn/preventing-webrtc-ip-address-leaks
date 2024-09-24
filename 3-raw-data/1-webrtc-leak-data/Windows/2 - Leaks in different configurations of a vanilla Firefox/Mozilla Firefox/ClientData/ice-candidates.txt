@@ -1,0 +1,108 @@
+#########################
+# Default configuration #
+#########################
+
+Mode 2.2 - No user consent
+
+candidate:0 1 UDP 2122187007 1233948e-8b03-446b-a1a6-7f63202292fa.local 61969 typ host
+candidate:2 1 UDP 2122252543 aec82042-d14d-4adb-b529-454501c0a2cb.local 61970 typ host
+candidate:4 1 TCP 2105458943 1233948e-8b03-446b-a1a6-7f63202292fa.local 9 typ host tcptype active
+candidate:5 1 TCP 2105524479 aec82042-d14d-4adb-b529-454501c0a2cb.local 9 typ host tcptype active
+candidate:0 1 UDP 2122187007 e303fe73-6c02-4a20-85f7-b9dcd686b91c.local 61973 typ host
+candidate:3 1 UDP 2122252543 b3a95389-e4ab-4514-9bc7-e652f48ee6ed.local 61974 typ host
+candidate:6 1 TCP 2105458943 e303fe73-6c02-4a20-85f7-b9dcd686b91c.local 9 typ host tcptype active
+candidate:7 1 TCP 2105524479 b3a95389-e4ab-4514-9bc7-e652f48ee6ed.local 9 typ host tcptype active
+candidate:1 1 UDP 1685987327 203.0.113.20 61969 typ srflx raddr 0.0.0.0 rport 0
+candidate:3 1 UDP 1686052607 2001:db8::20 61970 typ srflx raddr 0.0.0.0 rport 0
+candidate:1 1 UDP 1685987327 203.0.113.20 61973 typ srflx raddr 0.0.0.0 rport 0
+candidate:2 1 UDP 92151807 192.0.2.1 61738 typ relay raddr 192.0.2.1 rport 61738
+candidate:4 1 UDP 1686052607 2001:db8::20 61974 typ srflx raddr 0.0.0.0 rport 0
+candidate:5 1 UDP 92217087 192.0.2.1 56277 typ relay raddr 192.0.2.1 rport 56277
+
+Mode 1 - User consent
+
+candidate:0 1 UDP 2122252543 172.31.224.1 57565 typ host
+candidate:2 1 UDP 2122187007 2001:db8::20 57566 typ host
+candidate:4 1 UDP 2122121471 203.0.113.20 57567 typ host
+candidate:6 1 UDP 2122055935 2001:db8::30 57568 typ host
+candidate:8 1 UDP 2121990399 203.0.113.30 57569 typ host
+candidate:10 1 TCP 2105524479 172.31.224.1 9 typ host tcptype active
+candidate:11 1 TCP 2105458943 2001:db8::20 9 typ host tcptype active
+candidate:12 1 TCP 2105393407 203.0.113.20 9 typ host tcptype active
+candidate:13 1 TCP 2105327871 2001:db8::30 9 typ host tcptype active
+candidate:14 1 TCP 2105262335 203.0.113.30 9 typ host tcptype active
+candidate:0 1 UDP 2122252543 172.31.224.1 57570 typ host
+candidate:3 1 UDP 2122187007 2001:db8::20 57571 typ host
+candidate:6 1 UDP 2122121471 203.0.113.20 57572 typ host
+candidate:9 1 UDP 2122055935 2001:db8::30 57573 typ host
+candidate:12 1 UDP 2121990399 203.0.113.30 57574 typ host
+candidate:15 1 TCP 2105524479 172.31.224.1 9 typ host tcptype active
+candidate:16 1 TCP 2105458943 2001:db8::20 9 typ host tcptype active
+candidate:17 1 TCP 2105393407 203.0.113.20 9 typ host tcptype active
+candidate:18 1 TCP 2105327871 2001:db8::30 9 typ host tcptype active
+candidate:19 1 TCP 2105262335 203.0.113.30 9 typ host tcptype active
+candidate:5 1 UDP 92151551 192.0.2.1 61495 typ relay raddr 192.0.2.1 rport 61495
+candidate:8 1 UDP 92086271 192.0.2.1 55241 typ relay raddr 192.0.2.1 rport 55241
+candidate:11 1 UDP 92020479 192.0.2.1 65085 typ relay raddr 192.0.2.1 rport 65085
+candidate:14 1 UDP 91955199 192.0.2.1 54287 typ relay raddr 192.0.2.1 rport 54287
+
+########################
+# Forced configuration #
+########################
+
+Mode 2 -> 2.2 - No user consent
+
+candidate:0 1 UDP 2122187007 7410de4c-ecd7-4685-a8fb-fcc7a982035d.local 62809 typ host
+candidate:2 1 UDP 2122252543 85100dfd-5c16-4c25-ab2e-39ab3f38ae0e.local 62810 typ host
+candidate:4 1 TCP 2105458943 7410de4c-ecd7-4685-a8fb-fcc7a982035d.local 9 typ host tcptype active
+candidate:5 1 TCP 2105524479 85100dfd-5c16-4c25-ab2e-39ab3f38ae0e.local 9 typ host tcptype active
+candidate:0 1 UDP 2122187007 8b4e10fd-e2a6-43a0-898c-c060e23c927b.local 62813 typ host
+candidate:3 1 UDP 2122252543 3fa44959-06b0-4cab-a762-247f1b9213df.local 62814 typ host
+candidate:6 1 TCP 2105458943 8b4e10fd-e2a6-43a0-898c-c060e23c927b.local 9 typ host tcptype active
+candidate:7 1 TCP 2105524479 3fa44959-06b0-4cab-a762-247f1b9213df.local 9 typ host tcptype active
+candidate:1 1 UDP 1685987327 203.0.113.20 62809 typ srflx raddr 0.0.0.0 rport 0
+candidate:3 1 UDP 1686052607 2001:db8::20 62810 typ srflx raddr 0.0.0.0 rport 0
+candidate:1 1 UDP 1685987327 203.0.113.20 62813 typ srflx raddr 0.0.0.0 rport 0
+candidate:2 1 UDP 92151807 192.0.2.1 49397 typ relay raddr 192.0.2.1 rport 49397
+candidate:4 1 UDP 1686052607 2001:db8::20 62814 typ srflx raddr 0.0.0.0 rport 0
+candidate:5 1 UDP 92217087 192.0.2.1 60837 typ relay raddr 192.0.2.1 rport 60837
+
+Mode 2 - User consent
+
+candidate:0 1 UDP 2122187007 203.0.113.20 58488 typ host
+candidate:2 1 UDP 2122252543 2001:db8::20 58489 typ host
+candidate:4 1 TCP 2105458943 203.0.113.20 9 typ host tcptype active
+candidate:5 1 TCP 2105524479 2001:db8::20 9 typ host tcptype active
+candidate:0 1 UDP 2122187007 203.0.113.20 58492 typ host
+candidate:3 1 UDP 2122252543 2001:db8::20 58493 typ host
+candidate:6 1 TCP 2105458943 203.0.113.20 9 typ host tcptype active
+candidate:7 1 TCP 2105524479 2001:db8::20 9 typ host tcptype active
+candidate:2 1 UDP 92151807 192.0.2.1 62680 typ relay raddr 192.0.2.1 rport 62680
+candidate:5 1 UDP 92217087 192.0.2.1 53470 typ relay raddr 192.0.2.1 rport 53470
+
+Mode 3 - No user consent
+
+candidate:1 1 UDP 1685987327 203.0.113.20 65217 typ srflx raddr 0.0.0.0 rport 0
+candidate:1 1 UDP 1685987327 203.0.113.20 65221 typ srflx raddr 0.0.0.0 rport 0
+candidate:2 1 UDP 92151807 192.0.2.1 55178 typ relay raddr 192.0.2.1 rport 55178
+candidate:3 1 UDP 1686052607 2001:db8::20 65218 typ srflx raddr 0.0.0.0 rport 0
+candidate:4 1 UDP 1686052607 2001:db8::20 65222 typ srflx raddr 0.0.0.0 rport 0
+candidate:5 1 UDP 92217087 192.0.2.1 56500 typ relay raddr 192.0.2.1 rport 56500
+
+Mode 3 - User consent
+
+candidate:1 1 UDP 1685987327 203.0.113.20 50984 typ srflx raddr 203.0.113.20 rport 50984
+candidate:3 1 UDP 1686052607 2001:db8::20 50985 typ srflx raddr 2001:db8::20 rport 50985
+candidate:1 1 UDP 1685987327 203.0.113.20 50988 typ srflx raddr 203.0.113.20 rport 50988
+candidate:2 1 UDP 92151807 192.0.2.1 49939 typ relay raddr 192.0.2.1 rport 49939
+candidate:4 1 UDP 1686052607 2001:db8::20 50989 typ srflx raddr 2001:db8::20 rport 50989
+candidate:5 1 UDP 92217087 192.0.2.1 57050 typ relay raddr 192.0.2.1 rport 57050
+
+Mode 4 - No user consent
+
+No ICE candidate found.
+
+Mode 4 - User consent
+
+No ICE candidate found.
+
