@@ -5,10 +5,34 @@ Our tests show that our containerised solution is effective in all situations ev
 
 ## Citation
 
-If you find this work helpful and use it, please cite our paper.
+*If you find this work helpful and use it, please cite our paper; you will also find the associated [BibTeX](https://citation-needed.springer.com/v2/references/10.1007/978-3-031-89350-6_22?format=bibtex&flavour=citation) citation:*
 
-> [!NOTE]  
-> As soon as it is published, we will include the BibTeX reference and a DOI link in this README file.
+Nibert, G., Tixeuil, S., Polvé, B., M’boussi, N.J.B., Nguyen, X.S. (2025). Preventing WebRTC IP Address Leaks. In: Collart-Dutilleul, S., Ouchani, S., Cuppens, N., Cuppens, F. (eds) Risks and Security of Internet and Systems. CRiSIS 2024. Lecture Notes in Computer Science, vol 15456. Springer, Cham. https://doi.org/10.1007/978-3-031-89350-6_22
+
+
+```bibtex
+@InProceedings{10.1007/978-3-031-89350-6_22,
+author="Nibert, Guillaume
+and Tixeuil, S{\'e}bastien
+and Polv{\'e}, Baptiste
+and M'boussi, Nana J. Bakalafoua
+and Nguyen, Xuan Son",
+editor="Collart-Dutilleul, Simon
+and Ouchani, Samir
+and Cuppens, Nora
+and Cuppens, Fr{\'e}d{\'e}ric",
+title="Preventing WebRTC IP Address Leaks",
+booktitle="Risks and Security of Internet and Systems",
+year="2025",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="365--381",
+abstract="The WebRTC API enables real-time communication of text, video, and audio media streams through a web browser without requiring third-party extensions. However, it was not designed with privacy in mind. We conduct an experiment to analyse privacy leaks associated with WebRTC on Linux, macOS and Windows. Our findings show that despite recent updates to its specification and implementations, sensitive public IP addresses can still leak during audio/video communication, particularly in large non-NAT corporate networks, even when using a VPN, SOCKS or HTTP/S proxy. To address the observed leaks, we develop a simple, easily maintainable, cross-platform, open-source solution that confines the Mozilla Firefox web browser in a docker container. Our tests show that our containerised solution is effective in all situations even with a compromised browser without restricting applications.",
+isbn="978-3-031-89350-6"
+}
+```
+
+**Other citation formats**: [EndNote](https://citation-needed.springer.com/v2/references/10.1007/978-3-031-89350-6_22?format=endnote&flavour=citation) | [Reference Manager](https://citation-needed.springer.com/v2/references/10.1007/978-3-031-89350-6_22?format=refman&flavour=citation)
 
 ## Table of contents
 
