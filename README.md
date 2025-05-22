@@ -5,34 +5,34 @@ Our tests show that our containerised solution is effective in all situations ev
 
 ## Citation
 
-*If you find this work helpful and use it, please cite our paper; you will also find the associated [BibTeX](https://citation-needed.springer.com/v2/references/10.1007/978-3-031-89350-6_22?format=bibtex&flavour=citation) citation:*
+*If you find this work helpful and use it, please cite our paper; you will also find the associated [BibTeX](https://hal.sorbonne-universite.fr/hal-05048077v1/bibtex) citation:*
 
-Nibert, G., Tixeuil, S., Polvé, B., M’boussi, N.J.B., Nguyen, X.S. (2025). Preventing WebRTC IP Address Leaks. In: Collart-Dutilleul, S., Ouchani, S., Cuppens, N., Cuppens, F. (eds) Risks and Security of Internet and Systems. CRiSIS 2024. Lecture Notes in Computer Science, vol 15456. Springer, Cham. https://doi.org/10.1007/978-3-031-89350-6_22
+Guillaume Nibert, Sébastien Tixeuil, Baptiste Polvé, Nana J. Bakalafoua M'Boussi, Xuan Son Nguyen. Preventing WebRTC IP Address Leaks. *19th International Conference on Risks and Security of Internet and Systems*, Nov 2024, Aix-en-Provence, France. pp.365-381, [⟨10.1007/978-3-031-89350-6_22⟩](https://doi.org/10.1007/978-3-031-89350-6_22). [⟨hal-05048077⟩](https://hal.science/hal-05048077v1)
 
 
 ```bibtex
-@InProceedings{10.1007/978-3-031-89350-6_22,
-author="Nibert, Guillaume
-and Tixeuil, S{\'e}bastien
-and Polv{\'e}, Baptiste
-and M'boussi, Nana J. Bakalafoua
-and Nguyen, Xuan Son",
-editor="Collart-Dutilleul, Simon
-and Ouchani, Samir
-and Cuppens, Nora
-and Cuppens, Fr{\'e}d{\'e}ric",
-title="Preventing WebRTC IP Address Leaks",
-booktitle="Risks and Security of Internet and Systems",
-year="2025",
-publisher="Springer Nature Switzerland",
-address="Cham",
-pages="365--381",
-abstract="The WebRTC API enables real-time communication of text, video, and audio media streams through a web browser without requiring third-party extensions. However, it was not designed with privacy in mind. We conduct an experiment to analyse privacy leaks associated with WebRTC on Linux, macOS and Windows. Our findings show that despite recent updates to its specification and implementations, sensitive public IP addresses can still leak during audio/video communication, particularly in large non-NAT corporate networks, even when using a VPN, SOCKS or HTTP/S proxy. To address the observed leaks, we develop a simple, easily maintainable, cross-platform, open-source solution that confines the Mozilla Firefox web browser in a docker container. Our tests show that our containerised solution is effective in all situations even with a compromised browser without restricting applications.",
-isbn="978-3-031-89350-6"
+@inproceedings{nibert:hal-05048077,
+  TITLE = {{Preventing WebRTC IP Address Leaks}},
+  AUTHOR = {Nibert, Guillaume and Tixeuil, S{\'e}bastien and Polv{\'e}, Baptiste and Bakalafoua M'Boussi, Nana J. and Nguyen, Xuan Son},
+  URL = {https://hal.sorbonne-universite.fr/hal-05048077},
+  NOTE = {This version of the contribution has been accepted for publication, after peer review but is not the Version of Record and does not reflect post-acceptance improvements, or any corrections. The Version of Record is available online at: http://dx.doi.org/10.1007/978-3-031-89350-6\_22. Use of this Accepted Version is subject to the publisher's Accepted Manuscript terms of use https://www.springernature.com/gp/open-research/policies/accepted-manuscript-terms},
+  BOOKTITLE = {{Risks and Security of Internet and Systems}},
+  ADDRESS = {Aix-en-Provence, France},
+  EDITOR = {Simon Collart-Dutilleul and Samir Ouchani and Nora Cuppens and Fr{\'e}d{\'e}ric Cuppens},
+  PUBLISHER = {{Springer Nature Switzerland}},
+  SERIES = {Lecture Notes in Computer Science},
+  VOLUME = {15456},
+  PAGES = {365-381},
+  YEAR = {2024},
+  MONTH = Nov,
+  DOI = {10.1007/978-3-031-89350-6\_22},
+  KEYWORDS = {WebRTC ; IP address leaks ; docker ; confinement ; web browser ; privacy ; virtual private networks},
+  PDF = {https://hal.sorbonne-universite.fr/hal-05048077v1/file/Preventing%20WebRTC%20IP%20Address%20Leaks.pdf},
+  HAL_ID = {hal-05048077},
+  HAL_VERSION = {v1},
 }
 ```
 
-**Other citation formats**: [EndNote](https://citation-needed.springer.com/v2/references/10.1007/978-3-031-89350-6_22?format=endnote&flavour=citation) | [Reference Manager](https://citation-needed.springer.com/v2/references/10.1007/978-3-031-89350-6_22?format=refman&flavour=citation)
 
 ## Table of contents
 
