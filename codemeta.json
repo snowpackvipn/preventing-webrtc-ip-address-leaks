@@ -1,0 +1,95 @@
+{
+    "@context": "https://w3id.org/codemeta/3.0",
+    "type": "SoftwareSourceCode",
+    "author": [
+        {
+            "id": "https://orcid.org/0000-0002-3277-8533",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Snowpack, Sorbonne Université, CNRS, LIP6"
+            },
+            "email": "guillaume.nibert@snowpack.eu",
+            "familyName": "Nibert",
+            "givenName": "Guillaume"
+        },
+        {
+            "id": "https://orcid.org/0000-0002-0948-7172",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Sorbonne Université, CNRS, LIP6, Institut Universitaire de France"
+            },
+            "email": "sebastien.tixeuil@lip6.fr",
+            "familyName": "Tixeuil",
+            "givenName": "Sébastien"
+        },
+        {
+            "id": "_:author_3",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Snowpack"
+            },
+            "email": "baptiste.polve@snowpack.eu",
+            "familyName": "Polvé",
+            "givenName": "Baptiste"
+        },
+        {
+            "id": "_:author_4",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Snowpack"
+            },
+            "email": "nana.bakalafoua@snowpack.eu",
+            "familyName": "Bakalafoua M'boussi",
+            "givenName": "Nana J."
+        },
+        {
+            "id": "_:author_5",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Snowpack"
+            },
+            "email": "xuanson.nguyen@snowpack.eu",
+            "familyName": "Nguyen",
+            "givenName": "Xuan Son"
+        }
+    ],
+    "codeRepository": "https://github.com/snowpackvipn/preventing-webrtc-ip-address-leaks.git",
+    "dateCreated": "2024-09-24",
+    "datePublished": "2024-09-24",
+    "description": "A cross-platform Docker solution to mitigate WebRTC IP address leaks in Linux, macOS, and Windows.",
+    "funder": {
+        "type": "Organization",
+        "name": "French National Association of Research and Technology (ANRT) and France 2030 cybersecurity acceleration strategy"
+    },
+    "keywords": [
+        "WebRTC",
+        "IP address leaks",
+        "docker",
+        "confinement",
+        "web browser",
+        "privacy",
+        "virtual private networks"
+    ],
+    "license": "https://spdx.org/licenses/GPL-3.0+",
+    "name": "Preventing WebRTC IP Address Leaks",
+    "operatingSystem": [
+        "Ubuntu Desktop 22.04 LTS",
+        "Windows 11 Pro 23H2",
+        "macOS Sonoma 14.5"
+    ],
+    "programmingLanguage": [
+        "Python 3",
+        "JavaScript",
+        "HTML",
+        "Shell",
+        "PowerShell"
+    ],
+    "runtimePlatform": "Docker",
+    "funding": "CIFRE No. 2022/0074",
+    "referencePublication": "https://doi.org/10.1007/978-3-031-89350-6_22"
+}
